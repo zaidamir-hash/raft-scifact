@@ -1,0 +1,33 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Notebook and editor artifacts
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Raw data, model checkpoints, and generated artifacts
+data/raw/
+checkpoints/
+embeddings/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.faiss
+*.npy
+*.npz
+*.parquet
+
+# Experiment tracking and temporary outputs
+wandb/
+mlruns/
+*.log
+tmp/
+
+# Git cannot filter by file size; do not commit generated files over a few MB.

@@ -1,0 +1,11 @@
+torch
+transformers
+datasets
+sentence-transformers
+peft
+faiss-cpu
+rank-bm25
+mteb
+pandas
+seaborn
+gradio
