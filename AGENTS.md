@@ -161,9 +161,8 @@ requirements.txt
 - Do not commit large binaries (checkpoints, embeddings, raw data) to git
 
 ## Current status
-Planning: scope frozen, including frozen generator choice (Qwen2.5-1.5B-
-Instruct, fallback Llama-3.2-3B-Instruct). Still pending before Stage 1
-code: confirm the validation-split grouping logic works correctly on the
-actual SciFact training set once Stage 1 begins.
+Stage 1 complete: BEIR SciFact data prep and the leakage-safe grouped
+train/validation split are implemented and verified on the actual dataset.
+The official test set remains unchanged. Stage 2 has not started.
 [Update this section at the end of every stage, e.g.:
 "Stages 1-2 complete, starting Stage 3." Keep everything above unchanged.]

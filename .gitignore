@@ -12,6 +12,7 @@ venv/
 
 # Raw data, model checkpoints, and generated artifacts
 data/raw/
+data/processed/
 checkpoints/
 embeddings/
 *.ckpt

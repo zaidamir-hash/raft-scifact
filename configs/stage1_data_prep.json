@@ -1,0 +1,10 @@
+{
+  "stage": 1,
+  "dataset": "scifact",
+  "dataset_source": "BEIR",
+  "dataset_url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip",
+  "validation_fraction": 0.15,
+  "split_seed": 42,
+  "split_unit": "connected components of official-training queries linked by shared positive-relevance documents",
+  "passage_length_unit": "whitespace-delimited tokens over title plus text"
+}
