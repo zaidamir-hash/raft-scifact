@@ -22,3 +22,18 @@ The processed directory contains one stable-ID corpus, separate query files
 for train/validation/test, matching qrels files, a config snapshot, a split
 manifest, and machine-readable sanity statistics. Generated data is ignored
 by Git and must not be committed.
+
+## Stage 2: evaluate untouched retrieval baselines
+
+After Stage 1 artifacts exist, run both BM25 and pretrained E5-small-v2 on
+the fixed validation and test splits:
+
+```bash
+python src/evaluate_retrieval.py
+```
+
+The evaluator writes `results/stage2_baselines.csv` and its run metadata JSON.
+Normalized pretrained corpus embeddings, corpus-ID order, and the exact FAISS
+index are cached under `embeddings/pretrained_e5_small_v2/` and ignored by Git.
+The Colab wrapper at `notebooks/02_retrieval_baselines.ipynb` stores those
+large reusable artifacts on Google Drive.

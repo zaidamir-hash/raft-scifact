@@ -1,0 +1,33 @@
+{
+  "stage": 2,
+  "evaluation_splits": [
+    "validation",
+    "test"
+  ],
+  "top_k": 10,
+  "metrics": [
+    "recall_at_5",
+    "recall_at_10",
+    "precision_at_5",
+    "precision_at_10",
+    "mrr_at_10",
+    "ndcg_at_10"
+  ],
+  "bm25": {
+    "implementation": "rank_bm25.BM25Okapi",
+    "tokenizer": "lowercase Unicode word tokens",
+    "token_pattern": "(?u)\\b\\w+\\b",
+    "parameters": "rank_bm25 defaults"
+  },
+  "e5": {
+    "model_name": "intfloat/e5-small-v2",
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "max_sequence_length": 512,
+    "corpus_batch_size": 64,
+    "query_batch_size": 128,
+    "normalize_embeddings": true,
+    "faiss_index": "IndexFlatIP",
+    "device": "auto"
+  }
+}

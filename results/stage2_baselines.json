@@ -1,0 +1,120 @@
+{
+  "cache_directory": "embeddings/pretrained_e5_small_v2",
+  "config": {
+    "bm25": {
+      "implementation": "rank_bm25.BM25Okapi",
+      "parameters": "rank_bm25 defaults",
+      "token_pattern": "(?u)\\b\\w+\\b",
+      "tokenizer": "lowercase Unicode word tokens"
+    },
+    "e5": {
+      "corpus_batch_size": 64,
+      "device": "auto",
+      "faiss_index": "IndexFlatIP",
+      "max_sequence_length": 512,
+      "model_name": "intfloat/e5-small-v2",
+      "normalize_embeddings": true,
+      "passage_prefix": "passage: ",
+      "query_batch_size": 128,
+      "query_prefix": "query: "
+    },
+    "evaluation_splits": [
+      "validation",
+      "test"
+    ],
+    "metrics": [
+      "recall_at_5",
+      "recall_at_10",
+      "precision_at_5",
+      "precision_at_10",
+      "mrr_at_10",
+      "ndcg_at_10"
+    ],
+    "stage": 2,
+    "top_k": 10
+  },
+  "data_directory": "data/processed/scifact",
+  "e5": {
+    "corpus_embedding_cache_hit": true,
+    "device": "cpu",
+    "embedding_count": 5183,
+    "embedding_dimension": 384,
+    "embedding_dtype": "float32",
+    "embeddings_normalized": true,
+    "faiss_index_dimension": 384,
+    "faiss_index_file_bytes": 7961133,
+    "faiss_index_type": "IndexFlatIP",
+    "faiss_index_vectors": 5183,
+    "model_name": "intfloat/e5-small-v2",
+    "passage_example": "passage: Microstructural development of human newborn cerebral white matter assessed in vivo by diffusion tensor magnetic resonance imaging. Alterations of the architecture of cerebral white matter in the developing human brain can affect cortical development and result in functional disabilities. A line scan diffusion-weighted magnetic resonance imaging (MRI) sequence with diffusion tensor analysis was applied to measure the apparent diffusion coefficient, to calculate relative anisotropy, and to delineate three-dimensional fiber architecture in cerebral white matter in preterm (n = 17) and full-term infants (n = 7). To assess effects of prematurity on cerebral white matter development, early gestation preterm infants (n = 10) were studied a second time at term. In the central white matter the mean apparent diffusion coefficient at 28 wk was high, 1.8 microm2/ms, and decreased toward term to 1.2 microm2/ms. In the posterior limb of the internal capsule, the mean apparent diffusion coefficients at both times were similar (1.2 versus 1.1 microm2/ms). Relative anisotropy was higher the closer birth was to term with greater absolute values in the internal capsule than in the central white matter. Preterm infants at term showed higher mean diffusion coefficients in the central white matter (1.4 +/- 0.24 versus 1.15 +/- 0.09 microm2/ms, p = 0.016) and lower relative anisotropy in both areas compared with full-term infants (white matter, 10.9 +/- 0.6 versus 22.9 +/- 3.0%, p = 0.001; internal capsule, 24.0 +/- 4.44 versus 33.1 +/- 0.6% p = 0.006). Nonmyelinated fibers in the corpus callosum were visible by diffusion tensor MRI as early as 28 wk; full-term and preterm infants at term showed marked differences in white matter fiber organization. The data indicate that quantitative assessment of water diffusion by diffusion tensor MRI provides insight into microstructural development in cerebral white matter in living infants.",
+    "passage_prefix": "passage: ",
+    "query_example": "query: 40mg/day dosage of folic acid and 2mg/day dosage of vitamin B12 does not affect chronic kidney disease (CKD) progression.",
+    "query_prefix": "query: ",
+    "resolved_model_revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52"
+  },
+  "package_versions": {
+    "faiss-cpu": "1.15.0",
+    "numpy": "2.4.4",
+    "rank-bm25": "0.2.2",
+    "sentence-transformers": "6.0.1",
+    "torch": "2.14.0",
+    "transformers": "5.16.1"
+  },
+  "results": [
+    {
+      "corpus_size": 5183,
+      "method": "bm25",
+      "mrr_at_10": "0.658448",
+      "ndcg_at_10": "0.693474",
+      "precision_at_10": "0.090909",
+      "precision_at_5": "0.157025",
+      "query_count": 121,
+      "recall_at_10": "0.828375",
+      "recall_at_5": "0.741322",
+      "split": "validation"
+    },
+    {
+      "corpus_size": 5183,
+      "method": "bm25",
+      "mrr_at_10": "0.618615",
+      "ndcg_at_10": "0.651893",
+      "precision_at_10": "0.085000",
+      "precision_at_5": "0.158000",
+      "query_count": 300,
+      "recall_at_10": "0.774000",
+      "recall_at_5": "0.728444",
+      "split": "test"
+    },
+    {
+      "corpus_size": 5183,
+      "method": "pretrained_e5_small_v2",
+      "mrr_at_10": "0.688128",
+      "ndcg_at_10": "0.697962",
+      "precision_at_10": "0.085950",
+      "precision_at_5": "0.163636",
+      "query_count": 121,
+      "recall_at_10": "0.779063",
+      "recall_at_5": "0.749862",
+      "split": "validation"
+    },
+    {
+      "corpus_size": 5183,
+      "method": "pretrained_e5_small_v2",
+      "mrr_at_10": "0.657975",
+      "ndcg_at_10": "0.687499",
+      "precision_at_10": "0.091333",
+      "precision_at_5": "0.166667",
+      "query_count": 300,
+      "recall_at_10": "0.805667",
+      "recall_at_5": "0.750833",
+      "split": "test"
+    }
+  ],
+  "stage": 2,
+  "timing_seconds": {
+    "bm25_index_and_all_queries": 17.212,
+    "e5_all_queries": 15.114,
+    "e5_corpus_embedding": 0.0
+  },
+  "training_performed": false
+}

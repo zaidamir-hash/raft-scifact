@@ -161,8 +161,8 @@ requirements.txt
 - Do not commit large binaries (checkpoints, embeddings, raw data) to git
 
 ## Current status
-Stage 1 complete: BEIR SciFact data prep and the leakage-safe grouped
-train/validation split are implemented and verified on the actual dataset.
-The official test set remains unchanged. Stage 2 has not started.
+Stages 1-2 complete: BEIR SciFact data preparation and the leakage-safe
+split are verified, and the BM25 and untouched pretrained E5-small-v2
+baselines are evaluated on validation and test. Stage 3 has not started.
 [Update this section at the end of every stage, e.g.:
 "Stages 1-2 complete, starting Stage 3." Keep everything above unchanged.]
