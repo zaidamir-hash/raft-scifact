@@ -161,8 +161,15 @@ requirements.txt
 - Do not commit large binaries (checkpoints, embeddings, raw data) to git
 
 ## Current status
-Stages 1-2 complete: BEIR SciFact data preparation and the leakage-safe
-split are verified, and the BM25 and untouched pretrained E5-small-v2
-baselines are evaluated on validation and test. Stage 3 has not started.
-[Update this section at the end of every stage, e.g.:
-"Stages 1-2 complete, starting Stage 3." Keep everything above unchanged.]
+Stages 1-3 complete: BEIR SciFact data preparation and the leakage-safe
+split are verified; the BM25 and untouched pretrained E5-small-v2 baselines
+are evaluated; and the Stage 3 full E5-small-v2 fine-tuning configuration
+with in-batch negatives is frozen. The final Stage 3 validation-only run used
+seeds 42, 43, and 44. Mean retrieval metrics with 95% percentile-bootstrap
+confidence intervals over seeds were: Recall@5 0.758127 [0.758127, 0.758127],
+Recall@10 0.790083 [0.787328, 0.795592], Precision@5 0.165289 [0.165289,
+0.165289], Precision@10 0.087052 [0.086777, 0.087603], MRR@10 0.692365
+[0.692090, 0.692916], and nDCG@10 0.701475 [0.700679, 0.703068]. The
+three-run checksum audit verified distinct checkpoints, loss histories, and
+embedding caches with no resumed runs. The held-out test split was not loaded
+or evaluated during Stage 3 final validation. Stage 4 has not started.

@@ -1,0 +1,66 @@
+{
+  "stage": 3,
+  "audit_scope": "final three-seed validation runs",
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "checksum_representation": "first 16 hexadecimal characters of each SHA-256 digest, as displayed by the Colab audit",
+  "runs": [
+    {
+      "seed": 42,
+      "result_sha256_prefix_16": "5d61b6acca97925b",
+      "loss_sha256_prefix_16": "eba3fea95ff7ba3c",
+      "embedding_sha256_prefix_16": "bc4c72c0efb1bc45",
+      "model_sha256_prefix_16": "e6c9dcaa6a17b5ae",
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/best_checkpoint",
+      "resumed_from_checkpoint": null,
+      "training_seconds": 71.328,
+      "first_loss": 2.324144,
+      "last_loss": 1.449051
+    },
+    {
+      "seed": 43,
+      "result_sha256_prefix_16": "21a33469cee8f8dc",
+      "loss_sha256_prefix_16": "3833ffa673320641",
+      "embedding_sha256_prefix_16": "31aca728729b9338",
+      "model_sha256_prefix_16": "152d069578db3866",
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/best_checkpoint",
+      "resumed_from_checkpoint": null,
+      "training_seconds": 75.704,
+      "first_loss": 2.329705,
+      "last_loss": 1.448640
+    },
+    {
+      "seed": 44,
+      "result_sha256_prefix_16": "9ebe5daeb31e7d30",
+      "loss_sha256_prefix_16": "3c2bbebb009001e1",
+      "embedding_sha256_prefix_16": "9ab6850ab9873921",
+      "model_sha256_prefix_16": "869e4f7900dcf64a",
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/best_checkpoint",
+      "resumed_from_checkpoint": null,
+      "training_seconds": 75.806,
+      "first_loss": 2.336155,
+      "last_loss": 1.430146
+    }
+  ],
+  "pairwise_embedding_comparisons": [
+    {
+      "seeds": [42, 43],
+      "identical": false,
+      "maximum_absolute_difference": 0.0017812792211771011
+    },
+    {
+      "seeds": [42, 44],
+      "identical": false,
+      "maximum_absolute_difference": 0.0027762316167354584
+    },
+    {
+      "seeds": [43, 44],
+      "identical": false,
+      "maximum_absolute_difference": 0.0021796487271785736
+    }
+  ],
+  "audit_conclusion": "The three runs used distinct model checkpoints, loss histories, and corpus embeddings. None resumed from an existing checkpoint. Identical aggregate values for some discrete retrieval metrics do not indicate artifact reuse."
+}

@@ -1,0 +1,4 @@
+seed,recall_at_5,recall_at_10,precision_at_5,precision_at_10,mrr_at_10,ndcg_at_10,global_steps,epochs_completed,best_checkpoint,corpus_cache
+42,0.7581267217630853,0.7873278236914601,0.1652892561983471,0.08677685950413223,0.6920897284533648,0.7006785377811175,20,0.8,/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/best_checkpoint,/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/embeddings
+43,0.7581267217630853,0.7955922865013775,0.1652892561983471,0.08760330578512396,0.6929161747343565,0.7030675032878769,20,0.8,/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/best_checkpoint,/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/embeddings
+44,0.7581267217630853,0.7873278236914601,0.1652892561983471,0.08677685950413223,0.6920897284533648,0.7006785377811175,20,0.8,/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/best_checkpoint,/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/embeddings

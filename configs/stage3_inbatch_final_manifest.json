@@ -1,0 +1,33 @@
+{
+  "stage": 3,
+  "run_type": "final_3_seed",
+  "method": "full_finetune_inbatch_negatives",
+  "frozen_from": "configs/stage3_inbatch_pilot_v2.json",
+  "approved_by_user": true,
+  "approved_date": "2026-09-09",
+  "only_training_variation": "random_seed",
+  "random_seeds": [42, 43, 44],
+  "seed_configs": {
+    "42": "configs/stage3_inbatch_final_seed42.json",
+    "43": "configs/stage3_inbatch_final_seed43.json",
+    "44": "configs/stage3_inbatch_final_seed44.json"
+  },
+  "output_directories": {
+    "42": "stage3_inbatch/final_seed42",
+    "43": "stage3_inbatch/final_seed43",
+    "44": "stage3_inbatch/final_seed44"
+  },
+  "result_files": {
+    "42": "stage3_inbatch/final_seed42/results/stage3_final_result.json",
+    "43": "stage3_inbatch/final_seed43/results/stage3_final_result.json",
+    "44": "stage3_inbatch/final_seed44/results/stage3_final_result.json"
+  },
+  "confidence_interval": {
+    "method": "percentile_bootstrap_over_seeds",
+    "confidence_level": 0.95,
+    "iterations": 100000,
+    "random_seed": 42
+  },
+  "evaluation_split": "validation",
+  "test_evaluation": false
+}

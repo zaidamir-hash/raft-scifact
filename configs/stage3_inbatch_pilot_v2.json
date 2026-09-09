@@ -1,0 +1,90 @@
+{
+  "stage": 3,
+  "run_type": "single_seed_pilot",
+  "method": "full_finetune_inbatch_negatives",
+  "change_control": {
+    "supersedes": "configs/stage3_inbatch_pilot.json",
+    "approved_by_user": true,
+    "approved_date": "2026-09-08",
+    "reason": "The first pilot degraded every validation retrieval metric. Reduce the learning rate and evaluate at finer step intervals so validation nDCG@10 can select a less-coarse checkpoint.",
+    "changes": {
+      "learning_rate": {"from": 0.00002, "to": 0.000005},
+      "evaluation_frequency": {"from": "once_per_epoch", "to": "every_5_steps"},
+      "save_frequency": {"from": "once_per_epoch", "to": "every_5_steps"},
+      "smoke_test_rerun": {"from": true, "to": false, "reason": "The already-passed smoke-tested training and loss path is unchanged; its no-validation mode does not exercise pilot evaluation scheduling."}
+    }
+  },
+  "dataset": {
+    "name": "scifact",
+    "source": "BEIR",
+    "train_split": "train",
+    "checkpoint_selection_split": "validation",
+    "test_evaluation": false
+  },
+  "model": {
+    "name": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "max_sequence_length": 512,
+    "normalize_embeddings": true
+  },
+  "training": {
+    "random_seed": 42,
+    "batch_size": 32,
+    "effective_batch_size": 32,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.000005,
+    "epochs": 3,
+    "warmup_ratio": 0.1,
+    "optimizer": "AdamW",
+    "weight_decay": 0.0,
+    "lr_scheduler": "linear",
+    "max_grad_norm": 1.0,
+    "mixed_precision": "fp16_on_cuda",
+    "loss": "MultipleNegativesRankingLoss",
+    "batch_sampler": "NO_DUPLICATES",
+    "evaluation_frequency": "every_5_steps",
+    "evaluation_steps": 5,
+    "save_frequency": "every_5_steps",
+    "save_steps": 5,
+    "early_stopping_rule": {
+      "metric": "validation_ndcg_at_10",
+      "mode": "max",
+      "patience_evaluations": 2,
+      "minimum_improvement": 0.0
+    },
+    "best_checkpoint_metric": "validation_ndcg_at_10"
+  },
+  "smoke_test": {
+    "max_steps": 3,
+    "max_training_examples": 96,
+    "run_validation": false,
+    "rerun_for_this_config": false,
+    "reuse_result": "stage3_inbatch/smoke_seed42/results/stage3_smoke_result.json"
+  },
+  "evaluation": {
+    "top_k": 10,
+    "corpus_batch_size": 64,
+    "query_batch_size": 128,
+    "metrics": [
+      "recall_at_5",
+      "recall_at_10",
+      "precision_at_5",
+      "precision_at_10",
+      "mrr_at_10",
+      "ndcg_at_10"
+    ],
+    "selection_uses_validation_only": true,
+    "load_or_read_test_split": false
+  },
+  "artifacts": {
+    "drive_root": "/content/drive/MyDrive/RAFT",
+    "stage1_data": "stage1_scifact/processed",
+    "smoke_output": "stage3_inbatch/smoke_seed42",
+    "pilot_output": "stage3_inbatch/pilot_seed42_lr5e6_eval5",
+    "best_checkpoint": "stage3_inbatch/pilot_seed42_lr5e6_eval5/best_checkpoint",
+    "corpus_cache": "stage3_inbatch/pilot_seed42_lr5e6_eval5/embeddings",
+    "results": "stage3_inbatch/pilot_seed42_lr5e6_eval5/results"
+  }
+}

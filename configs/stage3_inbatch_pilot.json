@@ -1,0 +1,74 @@
+{
+  "stage": 3,
+  "run_type": "single_seed_pilot",
+  "method": "full_finetune_inbatch_negatives",
+  "dataset": {
+    "name": "scifact",
+    "source": "BEIR",
+    "train_split": "train",
+    "checkpoint_selection_split": "validation",
+    "test_evaluation": false
+  },
+  "model": {
+    "name": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "max_sequence_length": 512,
+    "normalize_embeddings": true
+  },
+  "training": {
+    "random_seed": 42,
+    "batch_size": 32,
+    "effective_batch_size": 32,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.00002,
+    "epochs": 3,
+    "warmup_ratio": 0.1,
+    "optimizer": "AdamW",
+    "weight_decay": 0.0,
+    "lr_scheduler": "linear",
+    "max_grad_norm": 1.0,
+    "mixed_precision": "fp16_on_cuda",
+    "loss": "MultipleNegativesRankingLoss",
+    "batch_sampler": "NO_DUPLICATES",
+    "evaluation_frequency": "once_per_epoch",
+    "save_frequency": "once_per_epoch",
+    "early_stopping_rule": {
+      "metric": "validation_ndcg_at_10",
+      "mode": "max",
+      "patience_evaluations": 2,
+      "minimum_improvement": 0.0
+    },
+    "best_checkpoint_metric": "validation_ndcg_at_10"
+  },
+  "smoke_test": {
+    "max_steps": 3,
+    "max_training_examples": 96,
+    "run_validation": false
+  },
+  "evaluation": {
+    "top_k": 10,
+    "corpus_batch_size": 64,
+    "query_batch_size": 128,
+    "metrics": [
+      "recall_at_5",
+      "recall_at_10",
+      "precision_at_5",
+      "precision_at_10",
+      "mrr_at_10",
+      "ndcg_at_10"
+    ],
+    "selection_uses_validation_only": true,
+    "load_or_read_test_split": false
+  },
+  "artifacts": {
+    "drive_root": "/content/drive/MyDrive/RAFT",
+    "stage1_data": "stage1_scifact/processed",
+    "smoke_output": "stage3_inbatch/smoke_seed42",
+    "pilot_output": "stage3_inbatch/pilot_seed42",
+    "best_checkpoint": "stage3_inbatch/pilot_seed42/best_checkpoint",
+    "corpus_cache": "stage3_inbatch/pilot_seed42/embeddings",
+    "results": "stage3_inbatch/pilot_seed42/results"
+  }
+}
