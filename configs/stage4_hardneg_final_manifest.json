@@ -1,0 +1,56 @@
+{
+  "stage": 4,
+  "run_type": "final_3_seed",
+  "method": "full_finetune_mined_hard_negatives",
+  "frozen_from": "configs/stage4_hardneg_pilot.json",
+  "approved_by_user": true,
+  "approved_date": "2026-09-10",
+  "only_training_variation": "random_seed",
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "seed_configs": {
+    "42": "configs/stage4_hardneg_final_seed42.json",
+    "43": "configs/stage4_hardneg_final_seed43.json",
+    "44": "configs/stage4_hardneg_final_seed44.json"
+  },
+  "output_directories": {
+    "42": "stage4_hardneg/final_seed42",
+    "43": "stage4_hardneg/final_seed43",
+    "44": "stage4_hardneg/final_seed44"
+  },
+  "result_files": {
+    "42": "stage4_hardneg/final_seed42/results/stage4_final_result.json",
+    "43": "stage4_hardneg/final_seed43/results/stage4_final_result.json",
+    "44": "stage4_hardneg/final_seed44/results/stage4_final_result.json"
+  },
+  "mining_artifacts": {
+    "hard_negatives": "stage4_hardneg/mined/stage4_seed42_hard_negatives.jsonl",
+    "summary": "stage4_hardneg/mined/stage4_seed42_mining_summary.json",
+    "reuse_exact_artifact": true
+  },
+  "confidence_interval": {
+    "method": "percentile_bootstrap_over_seeds",
+    "confidence_level": 0.95,
+    "iterations": 100000,
+    "random_seed": 42
+  },
+  "distinctness_audit": {
+    "sha256": [
+      "result",
+      "loss_curve",
+      "corpus_embeddings",
+      "model_weights"
+    ],
+    "require_distinct": [
+      "loss_curve",
+      "corpus_embeddings",
+      "model_weights"
+    ],
+    "pairwise_embedding_comparison": true
+  },
+  "evaluation_split": "validation",
+  "test_evaluation": false
+}

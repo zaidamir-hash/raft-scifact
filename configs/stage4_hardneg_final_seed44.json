@@ -1,0 +1,169 @@
+{
+  "stage": 4,
+  "run_type": "final_3_seed_member",
+  "method": "full_finetune_mined_hard_negatives",
+  "approved_by_user": true,
+  "approved_date": "2026-09-09",
+  "change_control": {
+    "approved_by_user": true,
+    "approved_date": "2026-09-09",
+    "reason": "The initial top-50 search produced no dense candidate passing the fixed false-negative filter for at least one training query. Search the complete corpus for the highest-ranked passing candidate without weakening the filter.",
+    "changes": {
+      "candidate_pool_size_per_method": {
+        "from": 50,
+        "to": 5183
+      },
+      "candidate_search_scope": {
+        "from": "top_50",
+        "to": "full_corpus"
+      }
+    },
+    "unchanged": [
+      "cosine_margin_0.05",
+      "exclude_all_query_qrels_positives",
+      "exclude_normalized_exact_positive_duplicates",
+      "one_bm25_negative_per_positive",
+      "one_stage3_seed42_dense_negative_per_positive"
+    ]
+  },
+  "dataset": {
+    "name": "scifact",
+    "source": "BEIR",
+    "train_split": "train",
+    "mining_split": "train",
+    "checkpoint_selection_split": "validation",
+    "test_evaluation": false
+  },
+  "model": {
+    "name": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "initialization": "fresh_pretrained_base",
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "max_sequence_length": 512,
+    "normalize_embeddings": true
+  },
+  "mining": {
+    "methods": [
+      "bm25",
+      "stage3_seed42_dense"
+    ],
+    "candidate_pool_size_per_method": 5183,
+    "candidate_search_scope": "full_corpus",
+    "hard_negatives_per_positive": 2,
+    "hard_negatives_by_source": {
+      "bm25": 1,
+      "stage3_seed42_dense": 1
+    },
+    "bm25": {
+      "implementation": "rank_bm25.BM25Okapi",
+      "tokenizer": "lowercase Unicode word tokens",
+      "token_pattern": "(?u)\\b\\w+\\b",
+      "parameters": "rank_bm25 defaults",
+      "reuse_stage2_configuration": true
+    },
+    "dense": {
+      "model_source": "stage3_seed42_best_checkpoint",
+      "checkpoint": "stage3_inbatch/final_seed42/best_checkpoint",
+      "corpus_cache": "stage3_inbatch/final_seed42/embeddings",
+      "query_batch_size": 128,
+      "normalize_embeddings": true,
+      "faiss_index": "IndexFlatIP"
+    },
+    "false_negative_filter": {
+      "exclude_all_query_qrels_positives": true,
+      "exclude_normalized_exact_positive_duplicates": true,
+      "cosine_margin": 0.05,
+      "reference_positive_score": "minimum_gold_positive_cosine_similarity",
+      "acceptance_rule": "candidate_score <= minimum_gold_positive_score - 0.05",
+      "relax_filter_if_insufficient": false,
+      "stop_if_no_full_corpus_candidate_passes": true
+    },
+    "deduplicate_across_sources": true,
+    "cache_mined_negatives": true
+  },
+  "training": {
+    "random_seed": 44,
+    "batch_size": 32,
+    "effective_batch_size": 32,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.000005,
+    "epochs": 3,
+    "warmup_ratio": 0.1,
+    "optimizer": "AdamW",
+    "weight_decay": 0,
+    "lr_scheduler": "linear",
+    "max_grad_norm": 1,
+    "mixed_precision": "fp16_on_cuda",
+    "loss": "MultipleNegativesRankingLoss",
+    "batch_sampler": "NO_DUPLICATES",
+    "evaluation_frequency": "every_5_steps",
+    "evaluation_steps": 5,
+    "save_frequency": "every_5_steps",
+    "save_steps": 5,
+    "early_stopping_rule": {
+      "metric": "validation_ndcg_at_10",
+      "mode": "max",
+      "patience_evaluations": 2,
+      "minimum_improvement": 0
+    },
+    "best_checkpoint_metric": "validation_ndcg_at_10"
+  },
+  "smoke_test": {
+    "max_steps": 3,
+    "max_training_examples": 96,
+    "run_validation": false,
+    "stop_on_out_of_memory": true,
+    "allow_automatic_batch_size_change": false,
+    "allow_automatic_gradient_accumulation_change": false
+  },
+  "evaluation": {
+    "top_k": 10,
+    "corpus_batch_size": 64,
+    "query_batch_size": 128,
+    "metrics": [
+      "recall_at_5",
+      "recall_at_10",
+      "precision_at_5",
+      "precision_at_10",
+      "mrr_at_10",
+      "ndcg_at_10"
+    ],
+    "selection_uses_validation_only": true,
+    "load_or_read_test_split": false,
+    "comparison_rows": [
+      "stage2_pretrained_e5",
+      "stage3_seed42_inbatch",
+      "stage3_three_seed_mean",
+      "stage4_hard_negative_seed44_final"
+    ]
+  },
+  "artifacts": {
+    "drive_root": "/content/drive/MyDrive/RAFT",
+    "stage1_data": "stage1_scifact/processed",
+    "stage2_results": "stage2_baselines/results/stage2_baselines.csv",
+    "stage3_summary": "stage3_inbatch/final_results/stage3_final_summary.json",
+    "stage3_seed42_result": "stage3_inbatch/final_seed42/results/stage3_final_result.json",
+    "mined_negatives": "stage4_hardneg/mined/stage4_seed42_hard_negatives.jsonl",
+    "mining_summary": "stage4_hardneg/mined/stage4_seed42_mining_summary.json",
+    "smoke_output": "stage4_hardneg/smoke_seed42",
+    "best_checkpoint": "stage4_hardneg/final_seed44/best_checkpoint",
+    "corpus_cache": "stage4_hardneg/final_seed44/embeddings",
+    "results": "stage4_hardneg/final_seed44/results",
+    "final_output": "stage4_hardneg/final_seed44"
+  },
+  "frozen_from": "configs/stage4_hardneg_pilot.json",
+  "freeze_control": {
+    "approved_by_user": true,
+    "approved_date": "2026-09-10",
+    "only_training_variation": "random_seed",
+    "final_random_seeds": [
+      42,
+      43,
+      44
+    ],
+    "early_stopping_patience_evaluations": 2,
+    "reuse_exact_mined_negatives": true,
+    "reuse_verified_batch32_smoke_test": true
+  }
+}

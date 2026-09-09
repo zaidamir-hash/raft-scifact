@@ -1,0 +1,4 @@
+seed,recall_at_5,recall_at_10,precision_at_5,precision_at_10,mrr_at_10,ndcg_at_10,global_steps,epochs_completed,best_checkpoint,corpus_cache
+42,0.7597796143250689,0.7955922865013775,0.1669421487603306,0.08760330578512396,0.6887839433293979,0.7017220236164384,20,0.8,/content/drive/MyDrive/RAFT/stage4_hardneg/final_seed42/best_checkpoint,/content/drive/MyDrive/RAFT/stage4_hardneg/final_seed42/embeddings
+43,0.7515151515151516,0.7955922865013775,0.1652892561983471,0.08760330578512396,0.688508461235734,0.7014687540286161,20,0.8,/content/drive/MyDrive/RAFT/stage4_hardneg/final_seed43/best_checkpoint,/content/drive/MyDrive/RAFT/stage4_hardneg/final_seed43/embeddings
+44,0.7515151515151516,0.7955922865013775,0.1652892561983471,0.08760330578512396,0.6898858717040535,0.7025508181077189,20,0.8,/content/drive/MyDrive/RAFT/stage4_hardneg/final_seed44/best_checkpoint,/content/drive/MyDrive/RAFT/stage4_hardneg/final_seed44/embeddings

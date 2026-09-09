@@ -161,15 +161,21 @@ requirements.txt
 - Do not commit large binaries (checkpoints, embeddings, raw data) to git
 
 ## Current status
-Stages 1-3 complete: BEIR SciFact data preparation and the leakage-safe
-split are verified; the BM25 and untouched pretrained E5-small-v2 baselines
-are evaluated; and the Stage 3 full E5-small-v2 fine-tuning configuration
-with in-batch negatives is frozen. The final Stage 3 validation-only run used
-seeds 42, 43, and 44. Mean retrieval metrics with 95% percentile-bootstrap
-confidence intervals over seeds were: Recall@5 0.758127 [0.758127, 0.758127],
-Recall@10 0.790083 [0.787328, 0.795592], Precision@5 0.165289 [0.165289,
-0.165289], Precision@10 0.087052 [0.086777, 0.087603], MRR@10 0.692365
-[0.692090, 0.692916], and nDCG@10 0.701475 [0.700679, 0.703068]. The
-three-run checksum audit verified distinct checkpoints, loss histories, and
-embedding caches with no resumed runs. The held-out test split was not loaded
-or evaluated during Stage 3 final validation. Stage 4 has not started.
+Stages 1-4 complete: BEIR SciFact data preparation and the leakage-safe split
+are verified; the BM25 and untouched pretrained E5-small-v2 baselines are
+evaluated; and the Stage 3 in-batch and Stage 4 hard-negative full-fine-tuning
+configurations are frozen. Stage 4 used one BM25-mined and one Stage 3
+seed-42-dense-mined negative per positive, full-corpus candidate search,
+qrels/duplicate exclusion, a fixed 0.05 cosine-margin filter, fresh pretrained
+initialization, learning rate 5e-6, evaluation every 5 steps, and patience-2
+early stopping. Its final validation-only run used seeds 42, 43, and 44. Mean
+retrieval metrics with 95% percentile-bootstrap confidence intervals over
+seeds were: Recall@5 0.754270 [0.751515, 0.759780], Recall@10 0.795592
+[0.795592, 0.795592], Precision@5 0.165840 [0.165289, 0.166942], Precision@10
+0.087603 [0.087603, 0.087603], MRR@10 0.689059 [0.688508, 0.689886], and
+nDCG@10 0.701914 [0.701469, 0.702551]. The checksum audit verified distinct
+checkpoints, loss histories, and embedding caches with no resumed runs. At
+this data scale, mined hard negatives were statistically equivalent to
+Stage 3 in-batch negatives: confidence intervals overlapped and differences
+were small and mixed across metrics. The held-out test split was not loaded or
+evaluated during Stage 4 final validation. Stage 5 has not started.
