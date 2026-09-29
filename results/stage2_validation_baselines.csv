@@ -1,0 +1,3 @@
+method,split,recall_at_5,recall_at_10,precision_at_5,precision_at_10,mrr_at_10,ndcg_at_10,query_count,corpus_size
+bm25,validation,0.741322,0.828375,0.157025,0.090909,0.658448,0.693474,121,5183
+pretrained_e5_small_v2,validation,0.749862,0.779063,0.163636,0.085950,0.688128,0.697962,121,5183

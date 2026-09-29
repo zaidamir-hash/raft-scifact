@@ -1,0 +1,93 @@
+{
+  "all_embedding_hashes_distinct": true,
+  "all_loss_hashes_distinct": true,
+  "all_model_hashes_distinct": true,
+  "conclusion": "All three Stage 5 runs have distinct adapter, loss, and embedding artifacts.",
+  "files": {
+    "audit_csv": "/content/drive/MyDrive/RAFT/stage5_lora/final_results/stage5_final_seed_audit.csv"
+  },
+  "hash_algorithm": "SHA-256",
+  "individual_adapter_weight_hashes": {
+    "42": {
+      "adapter_model.safetensors": "4c905eba52b47102101447e08199311f0b0f50cc57c4f20622ea12fd48a11096"
+    },
+    "43": {
+      "adapter_model.safetensors": "9f5ae74fe674e7c198d2d33274f3adcebffc2fb0a830e4227e85e2231e45f8b0"
+    },
+    "44": {
+      "adapter_model.safetensors": "d0e36d5cfaefccf50770fcf68bae45f682e5a89f2359300726d9ff60f8f4fa36"
+    }
+  },
+  "pairwise_embedding_comparisons": [
+    {
+      "embeddings_identical": false,
+      "maximum_absolute_difference": 0.02956739440560341,
+      "seeds": [
+        42,
+        43
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "maximum_absolute_difference": 0.029356833547353745,
+      "seeds": [
+        42,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "maximum_absolute_difference": 0.0013370662927627563,
+      "seeds": [
+        43,
+        44
+      ]
+    }
+  ],
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "runs": [
+    {
+      "best_adapter": "/content/drive/MyDrive/RAFT/stage5_lora/final_seed42/best_adapter",
+      "embedding_sha256": "ecb3f936e2cdbfa5848ef0537de258a99b9dcd1ac61a98e1ddf9318f9678755f",
+      "first_loss": 2.3325819969177246,
+      "last_loss": 1.0318536758422852,
+      "loss_sha256": "655a839c786306d9662be052bd83add73e4b9fd4b0fb203665f0c6d3a66a33f1",
+      "model_sha256": "4fa535614f052b2daf9c07b2784b4f4275aab4f30dd1203dae75953773e84f61",
+      "result_sha256": "b0e9f4f41368622483f766bd2faaa85bf91b8bfeeb452e5d1c4db5c5476fa5d4",
+      "resumed_from_checkpoint": null,
+      "seed": 42,
+      "training_seconds": 166.902
+    },
+    {
+      "best_adapter": "/content/drive/MyDrive/RAFT/stage5_lora/final_seed43/best_adapter",
+      "embedding_sha256": "e126123597c42365a33c185321d56902380dc11b20524e42b34e5916ae8eaad7",
+      "first_loss": 2.320596933364868,
+      "last_loss": 1.4720968008041382,
+      "loss_sha256": "c38b15d215d7cd77e1285231ae747e5610085b2cec4c83f77ef417afd96876c4",
+      "model_sha256": "a029b48bb1761e202936358b3cf4f71bf1670de10bd7b60a615a5301c55a76ba",
+      "result_sha256": "cce11f7b8f9ab7a2036de2ac8bc87d3d38cfdb15332acc2a0792e03fd95250b5",
+      "resumed_from_checkpoint": null,
+      "seed": 43,
+      "training_seconds": 87.783
+    },
+    {
+      "best_adapter": "/content/drive/MyDrive/RAFT/stage5_lora/final_seed44/best_adapter",
+      "embedding_sha256": "f32b12426e1b86f18a843dbaf860b4f986f650a4a1bd39981638eae5057bbb07",
+      "first_loss": 2.326622486114502,
+      "last_loss": 1.4423775672912598,
+      "loss_sha256": "de513ee2d17743c119c90b48bd5fea4f2b4866694c2a7b5663cd13d97f66472a",
+      "model_sha256": "2b33598ff08fd8d18ecb1552a7e1fbb81dd63662a1ac0bd5bc87efc0fe9f09ab",
+      "result_sha256": "0a3c8ad4e0b2bcd4d95ed416a6d34e7f9814b764c13dab5038e0eae4737d7045",
+      "resumed_from_checkpoint": null,
+      "seed": 44,
+      "training_seconds": 88.157
+    }
+  ],
+  "scope": "final three-seed validation runs",
+  "stage": 5,
+  "test_split_loaded": false
+}

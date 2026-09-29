@@ -1,0 +1,46 @@
+{
+  "full_finetuning": {
+    "checkpoint_size_bytes": 134210804,
+    "peak_gpu_memory_bytes": 4373489152,
+    "reference": "stage3_inbatch_seed42",
+    "total_parameters": 33360000,
+    "trainable_parameters": 33360000,
+    "trainable_percent": 100.0,
+    "training_seconds": 71.328
+  },
+  "lora": {
+    "adapter_only_checkpoint": {
+      "adapter_only": true,
+      "adapter_weight_files": [
+        "adapter_model.safetensors"
+      ],
+      "all_files": [
+        "1_Pooling/config.json",
+        "2_Normalize/config.json",
+        "README.md",
+        "adapter_config.json",
+        "adapter_model.safetensors",
+        "config_sentence_transformers.json",
+        "modules.json",
+        "sentence_bert_config.json",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ],
+      "forbidden_full_weight_files": [],
+      "size_bytes": 1346019
+    },
+    "checkpoint_size_bytes": 1346019,
+    "peak_gpu_memory_bytes": 3289492992,
+    "total_parameters": 33507456,
+    "trainable_parameters": 147456,
+    "trainable_percent": 0.44006921922093994,
+    "training_seconds": 106.368
+  },
+  "memory_measurement": "matched separate-process three-step training smokes",
+  "ratios": {
+    "checkpoint_size_lora_over_full": 0.010029140425982398,
+    "peak_gpu_memory_lora_over_full": 0.7521438553233206,
+    "trainable_parameters_lora_over_full": 0.004420143884892086,
+    "training_time_lora_over_full": 1.4912516823687751
+  }
+}

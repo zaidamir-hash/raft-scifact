@@ -1,0 +1,51 @@
+{
+  "stage": 5,
+  "run_type": "final_3_seed",
+  "method": "lora_inbatch_negatives",
+  "frozen_from": "configs/stage5_lora_pilot.json",
+  "approved_by_user": true,
+  "approved_date": "2026-09-10",
+  "only_training_variation": "random_seed",
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "seed_configs": {
+    "42": "configs/stage5_lora_final_seed42.json",
+    "43": "configs/stage5_lora_final_seed43.json",
+    "44": "configs/stage5_lora_final_seed44.json"
+  },
+  "output_directories": {
+    "42": "stage5_lora/final_seed42",
+    "43": "stage5_lora/final_seed43",
+    "44": "stage5_lora/final_seed44"
+  },
+  "result_files": {
+    "42": "stage5_lora/final_seed42/results/stage5_lora_final_result.json",
+    "43": "stage5_lora/final_seed43/results/stage5_lora_final_result.json",
+    "44": "stage5_lora/final_seed44/results/stage5_lora_final_result.json"
+  },
+  "confidence_interval": {
+    "method": "percentile_bootstrap_over_seeds",
+    "confidence_level": 0.95,
+    "iterations": 100000,
+    "random_seed": 42
+  },
+  "distinctness_audit": {
+    "sha256": [
+      "result",
+      "loss_curve",
+      "corpus_embeddings",
+      "adapter_weights"
+    ],
+    "require_distinct": [
+      "loss_curve",
+      "corpus_embeddings",
+      "adapter_weights"
+    ],
+    "pairwise_embedding_comparison": true
+  },
+  "evaluation_split": "validation",
+  "test_evaluation": false
+}

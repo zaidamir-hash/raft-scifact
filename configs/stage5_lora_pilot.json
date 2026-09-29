@@ -1,0 +1,126 @@
+{
+  "stage": 5,
+  "run_type": "single_seed_pilot",
+  "method": "lora_inbatch_negatives",
+  "approved_by_user": true,
+  "approved_date": "2026-09-10",
+  "full_finetuning_reference": {
+    "stage": 3,
+    "method": "full_finetune_inbatch_negatives",
+    "seed": 42,
+    "config": "configs/stage3_inbatch_final_seed42.json",
+    "learning_rate": 0.000005,
+    "profiling_max_steps": 3,
+    "reason": "Stage 3 gives the cleanest LoRA-versus-full-fine-tuning comparison because both use identical positive pairs and in-batch negatives."
+  },
+  "dataset": {
+    "name": "scifact",
+    "source": "BEIR",
+    "train_split": "train",
+    "checkpoint_selection_split": "validation",
+    "test_evaluation": false
+  },
+  "model": {
+    "name": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "initialization": "fresh_pretrained_base_with_lora",
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "max_sequence_length": 512,
+    "normalize_embeddings": true
+  },
+  "lora": {
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": ["query", "value"],
+    "bias": "none",
+    "task_type": "FEATURE_EXTRACTION",
+    "expected_target_module_count": 24,
+    "save_adapter_only": true
+  },
+  "training": {
+    "random_seed": 42,
+    "batch_size": 32,
+    "effective_batch_size": 32,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0001,
+    "epochs": 3,
+    "warmup_ratio": 0.1,
+    "optimizer": "AdamW",
+    "weight_decay": 0.0,
+    "lr_scheduler": "linear",
+    "max_grad_norm": 1.0,
+    "mixed_precision": "fp16_on_cuda",
+    "loss": "MultipleNegativesRankingLoss",
+    "negative_sampling": "in_batch_only",
+    "hard_negatives_per_positive": 0,
+    "mining_method": null,
+    "batch_sampler": "NO_DUPLICATES",
+    "evaluation_frequency": "every_5_steps",
+    "evaluation_steps": 5,
+    "save_frequency": "every_5_steps",
+    "save_steps": 5,
+    "early_stopping_rule": {
+      "metric": "validation_ndcg_at_10",
+      "mode": "max",
+      "patience_evaluations": 2,
+      "minimum_improvement": 0.0
+    },
+    "best_checkpoint_metric": "validation_ndcg_at_10"
+  },
+  "smoke_test": {
+    "max_steps": 3,
+    "max_training_examples": 96,
+    "run_validation": false,
+    "stop_on_out_of_memory": true,
+    "allow_automatic_batch_size_change": false,
+    "allow_automatic_gradient_accumulation_change": false
+  },
+  "efficiency": {
+    "peak_gpu_memory_method": "torch.cuda.max_memory_allocated",
+    "memory_comparison": "matched_separate_process_three_step_smokes",
+    "full_checkpoint": "stage3_inbatch/final_seed42/best_checkpoint",
+    "full_result": "stage3_inbatch/final_seed42/results/stage3_final_result.json",
+    "verify_adapter_only_checkpoint": true
+  },
+  "evaluation": {
+    "top_k": 10,
+    "corpus_batch_size": 64,
+    "query_batch_size": 128,
+    "metrics": [
+      "recall_at_5",
+      "recall_at_10",
+      "precision_at_5",
+      "precision_at_10",
+      "mrr_at_10",
+      "ndcg_at_10"
+    ],
+    "selection_uses_validation_only": true,
+    "load_or_read_test_split": false,
+    "comparison_rows": [
+      "stage2_bm25_validation",
+      "stage2_pretrained_e5_validation",
+      "stage3_seed42_validation",
+      "stage3_three_seed_mean_validation",
+      "stage4_seed42_validation",
+      "stage4_three_seed_mean_validation",
+      "stage5_lora_seed42_pilot_validation"
+    ]
+  },
+  "artifacts": {
+    "drive_root": "/content/drive/MyDrive/RAFT",
+    "stage1_data": "stage1_scifact/processed",
+    "stage2_validation_baselines": "results/stage2_validation_baselines.csv",
+    "stage3_summary": "stage3_inbatch/final_results/stage3_final_summary.json",
+    "stage3_seed42_result": "stage3_inbatch/final_seed42/results/stage3_final_result.json",
+    "stage3_seed42_checkpoint": "stage3_inbatch/final_seed42/best_checkpoint",
+    "stage4_summary": "stage4_hardneg/final_results/stage4_final_summary.json",
+    "full_profile_output": "stage5_lora/full_ft_profile_seed42",
+    "smoke_output": "stage5_lora/smoke_seed42",
+    "pilot_output": "stage5_lora/pilot_seed42",
+    "best_adapter": "stage5_lora/pilot_seed42/best_adapter",
+    "corpus_cache": "stage5_lora/pilot_seed42/embeddings",
+    "results": "stage5_lora/pilot_seed42/results"
+  }
+}

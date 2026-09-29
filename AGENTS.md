@@ -161,9 +161,9 @@ requirements.txt
 - Do not commit large binaries (checkpoints, embeddings, raw data) to git
 
 ## Current status
-Stages 1-4 complete: BEIR SciFact data preparation and the leakage-safe split
+Stages 1-5 complete: BEIR SciFact data preparation and the leakage-safe split
 are verified; the BM25 and untouched pretrained E5-small-v2 baselines are
-evaluated; and the Stage 3 in-batch and Stage 4 hard-negative full-fine-tuning
+evaluated; and the Stage 3 in-batch, Stage 4 hard-negative, and Stage 5 LoRA
 configurations are frozen. Stage 4 used one BM25-mined and one Stage 3
 seed-42-dense-mined negative per positive, full-corpus candidate search,
 qrels/duplicate exclusion, a fixed 0.05 cosine-margin filter, fresh pretrained
@@ -173,9 +173,28 @@ retrieval metrics with 95% percentile-bootstrap confidence intervals over
 seeds were: Recall@5 0.754270 [0.751515, 0.759780], Recall@10 0.795592
 [0.795592, 0.795592], Precision@5 0.165840 [0.165289, 0.166942], Precision@10
 0.087603 [0.087603, 0.087603], MRR@10 0.689059 [0.688508, 0.689886], and
-nDCG@10 0.701914 [0.701469, 0.702551]. The checksum audit verified distinct
-checkpoints, loss histories, and embedding caches with no resumed runs. At
-this data scale, mined hard negatives were statistically equivalent to
-Stage 3 in-batch negatives: confidence intervals overlapped and differences
-were small and mixed across metrics. The held-out test split was not loaded or
-evaluated during Stage 4 final validation. Stage 5 has not started.
+nDCG@10 0.701914 [0.701469, 0.702551]. At this data scale, mined hard
+negatives were statistically equivalent to Stage 3 in-batch negatives:
+confidence intervals overlapped and differences were small and mixed across
+metrics.
+
+Stage 5 used Stage 3 in-batch-negative full fine-tuning as its fair-comparison
+reference. The frozen LoRA configuration used rank 8, alpha 16, dropout 0.05,
+query and value projection targets, learning rate 1e-4, batch/effective batch
+32, evaluation every 5 steps, and patience-2 early stopping; all other data,
+loss, and evaluation settings matched frozen Stage 3. Its validation-only
+final run used seeds 42, 43, and 44. Mean retrieval metrics with 95% percentile-
+bootstrap confidence intervals over seeds were: Recall@5 0.744904 [0.733333,
+0.768044], Recall@10 0.791460 [0.779063, 0.807989], Precision@5 0.163085
+[0.160331, 0.168595], Precision@10 0.087328 [0.085950, 0.089256], MRR@10
+0.688948 [0.687925, 0.690378], and nDCG@10 0.700269 [0.698539, 0.703406].
+The checksum audit verified distinct adapter weights, loss histories, and
+embedding caches with no resumed runs, and every saved checkpoint contained
+adapter weights only. The pilot efficiency profile measured 147,456 trainable
+LoRA parameters (0.4401% of 33,507,456 total), 3,289,492,992 bytes peak GPU
+memory versus 4,373,489,152 for full fine-tuning, and a 1,346,019-byte adapter
+checkpoint versus a 134,210,804-byte full checkpoint. LoRA therefore retained
+99.8% of Stage 3 full fine-tuning's mean validation nDCG@10 while training
+about 0.4% as many parameters and using about 1% of the checkpoint storage.
+The held-out test split was not loaded or evaluated during the Stage 5 final
+validation run. Stage 6 has not started.

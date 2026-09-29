@@ -1,0 +1,4 @@
+seed,recall_at_5,recall_at_10,precision_at_5,precision_at_10,mrr_at_10,ndcg_at_10,global_steps,epochs_completed,best_adapter,corpus_cache
+42,0.7680440771349862,0.8079889807162536,0.16859504132231407,0.08925619834710745,0.6879247015610651,0.703406208380053,50,2.0,/content/drive/MyDrive/RAFT/stage5_lora/final_seed42/best_adapter,/content/drive/MyDrive/RAFT/stage5_lora/final_seed42/embeddings
+43,0.7333333333333332,0.7790633608815428,0.1603305785123967,0.08595041322314051,0.6903778040141676,0.6985387146535306,25,1.0,/content/drive/MyDrive/RAFT/stage5_lora/final_seed43/best_adapter,/content/drive/MyDrive/RAFT/stage5_lora/final_seed43/embeddings
+44,0.7333333333333332,0.7873278236914601,0.1603305785123967,0.08677685950413223,0.6885412567230748,0.6988624376991591,25,1.0,/content/drive/MyDrive/RAFT/stage5_lora/final_seed44/best_adapter,/content/drive/MyDrive/RAFT/stage5_lora/final_seed44/embeddings
