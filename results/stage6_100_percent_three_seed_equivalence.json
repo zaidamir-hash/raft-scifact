@@ -1,0 +1,51 @@
+{
+  "fraction_percent": 100,
+  "passed": true,
+  "per_seed": [
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/best_checkpoint",
+      "checkpoint_and_embeddings_usable": true,
+      "corpus_cache": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/embeddings",
+      "model_config_identical": true,
+      "original_stage1_train_hashes_identical": true,
+      "result_path": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/results/stage3_final_result.json",
+      "seed": 42,
+      "summary_metrics_identical": true,
+      "training_config_identical": true
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/best_checkpoint",
+      "checkpoint_and_embeddings_usable": true,
+      "corpus_cache": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/embeddings",
+      "model_config_identical": true,
+      "original_stage1_train_hashes_identical": true,
+      "result_path": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/results/stage3_final_result.json",
+      "seed": 43,
+      "summary_metrics_identical": true,
+      "training_config_identical": true
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/best_checkpoint",
+      "checkpoint_and_embeddings_usable": true,
+      "corpus_cache": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/embeddings",
+      "model_config_identical": true,
+      "original_stage1_train_hashes_identical": true,
+      "result_path": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/results/stage3_final_result.json",
+      "seed": 44,
+      "summary_metrics_identical": true,
+      "training_config_identical": true
+    }
+  ],
+  "qrels_train_sha256": "6f930462517c76d82764448720ea70658dac0a110dbf9e8abd545b7f8ff67002",
+  "queries_train_sha256": "309656f50a84bb7dab9b57cb2b606c1dbc8ac7e344386e70d052ba381d551e57",
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "reused_stage": 3,
+  "stage": 6,
+  "test_split_loaded": false,
+  "training_pairs": 783,
+  "training_queries": 688
+}

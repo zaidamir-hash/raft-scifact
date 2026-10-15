@@ -1,0 +1,29 @@
+{
+  "approved_by_user": true,
+  "approved_date": "2026-09-29",
+  "base_config": "configs/stage3_inbatch_final_seed42.json",
+  "config_files": {
+    "10": "configs/stage6_data_efficiency_pilot_10.json",
+    "100": "configs/stage6_data_efficiency_pilot_100.json",
+    "25": "configs/stage6_data_efficiency_pilot_25.json",
+    "50": "configs/stage6_data_efficiency_pilot_50.json"
+  },
+  "final_three_seed_sweep": false,
+  "fractions_percent": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "phase": "single_seed_pilots",
+  "reused_reference_fraction_percent": 100,
+  "stage": 6,
+  "subset_seed": 42,
+  "test_evaluation": false,
+  "trained_pilot_fractions_percent": [
+    10,
+    25,
+    50
+  ],
+  "training_seed": 42
+}

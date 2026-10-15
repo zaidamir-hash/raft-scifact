@@ -1,0 +1,125 @@
+{
+  "approved_by_user": true,
+  "approved_date": "2026-09-29",
+  "artifacts": {
+    "best_checkpoint": "stage6_data_efficiency/final_fraction10_seed43/best_checkpoint",
+    "corpus_cache": "stage6_data_efficiency/final_fraction10_seed43/embeddings",
+    "drive_root": "/content/drive/MyDrive/RAFT",
+    "final_output": "stage6_data_efficiency/final_fraction10_seed43",
+    "results": "stage6_data_efficiency/final_fraction10_seed43/results",
+    "stage1_data": "stage1_scifact/processed",
+    "subset_root": "stage6_data_efficiency/subsets"
+  },
+  "base_reference": {
+    "config": "configs/stage3_inbatch_final_seed42.json",
+    "method": "full_finetune_inbatch_negatives",
+    "reason": "Clean labeled-data dose response without full-data dense-mining dependence",
+    "stage": 3
+  },
+  "dataset": {
+    "checkpoint_selection_split": "validation",
+    "name": "scifact",
+    "source": "BEIR",
+    "test_evaluation": false,
+    "train_split": "train"
+  },
+  "evaluation": {
+    "comparison_rows": [
+      "stage2_bm25_validation",
+      "stage2_pretrained_e5_validation",
+      "stage3_three_seed_mean_validation",
+      "stage4_three_seed_mean_validation",
+      "stage5_three_seed_mean_validation"
+    ],
+    "corpus_batch_size": 64,
+    "load_or_read_test_split": false,
+    "metrics": [
+      "recall_at_5",
+      "recall_at_10",
+      "precision_at_5",
+      "precision_at_10",
+      "mrr_at_10",
+      "ndcg_at_10"
+    ],
+    "query_batch_size": 128,
+    "selection_uses_validation_only": true,
+    "top_k": 10
+  },
+  "execution": {
+    "only_training_setting_changed_from_pilot": "random_seed",
+    "phase": "final_three_seed_validation_only",
+    "pilot_config": "configs/stage6_data_efficiency_pilot_10.json",
+    "reuse_pilot_training_run": false
+  },
+  "method": "data_efficiency_full_finetune_inbatch",
+  "model": {
+    "max_sequence_length": 512,
+    "name": "intfloat/e5-small-v2",
+    "normalize_embeddings": true,
+    "passage_prefix": "passage: ",
+    "query_prefix": "query: ",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52"
+  },
+  "run_type": "final_three_seed_fraction",
+  "smoke_test": {
+    "allow_automatic_batch_size_change": false,
+    "allow_automatic_gradient_accumulation_change": false,
+    "fraction_percent": 10,
+    "max_steps": 3,
+    "max_training_examples": 96,
+    "reuse_for_larger_fraction_pilots": false,
+    "run_validation": false,
+    "stop_on_out_of_memory": true
+  },
+  "stage": 6,
+  "subset": {
+    "component_count": 43,
+    "evaluation_steps": 1,
+    "fraction_definition": "query_count",
+    "grouping_rule": "connected components of training queries linked by shared positive-relevance documents",
+    "nested_fractions_percent": [
+      10,
+      25,
+      50,
+      100
+    ],
+    "qrels_train_sha256": "694b00829f76ebb13397cf1ac529ea359d765153c1febe029e79871781619389",
+    "queries_train_sha256": "cc395ef114b3d4e482f1d60f1c7266ac3c5503844f6c5fdf1e3b43f1615e6f33",
+    "realized_fraction": 0.10174418604651163,
+    "realized_query_count": 70,
+    "save_steps": 1,
+    "steps_per_epoch": 3,
+    "subset_seed": 42,
+    "target_fraction_percent": 10,
+    "target_query_count": 69,
+    "train_validation_relevant_document_overlap": 0,
+    "training_pair_count": 73
+  },
+  "training": {
+    "batch_sampler": "NO_DUPLICATES",
+    "batch_size": 32,
+    "best_checkpoint_metric": "validation_ndcg_at_10",
+    "early_stopping_rule": {
+      "metric": "validation_ndcg_at_10",
+      "minimum_improvement": 0.0,
+      "mode": "max",
+      "patience_evaluations": 2
+    },
+    "effective_batch_size": 32,
+    "epochs": 3,
+    "evaluation_frequency": "scaled_per_fraction_steps",
+    "evaluation_steps": 1,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 5e-06,
+    "loss": "MultipleNegativesRankingLoss",
+    "lr_scheduler": "linear",
+    "max_grad_norm": 1.0,
+    "mixed_precision": "fp16_on_cuda",
+    "optimizer": "AdamW",
+    "random_seed": 43,
+    "save_frequency": "scaled_per_fraction_steps",
+    "save_steps": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.0
+  }
+}

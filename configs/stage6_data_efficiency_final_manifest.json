@@ -1,0 +1,44 @@
+{
+  "approved_by_user": true,
+  "confidence_interval": {
+    "confidence_level": 0.95,
+    "iterations": 100000,
+    "method": "percentile_bootstrap_over_seeds",
+    "random_seed": 42
+  },
+  "config_files": {
+    "10": {
+      "42": "configs/stage6_data_efficiency_final_fraction10_seed42.json",
+      "43": "configs/stage6_data_efficiency_final_fraction10_seed43.json",
+      "44": "configs/stage6_data_efficiency_final_fraction10_seed44.json"
+    },
+    "25": {
+      "42": "configs/stage6_data_efficiency_final_fraction25_seed42.json",
+      "43": "configs/stage6_data_efficiency_final_fraction25_seed43.json",
+      "44": "configs/stage6_data_efficiency_final_fraction25_seed44.json"
+    },
+    "50": {
+      "42": "configs/stage6_data_efficiency_final_fraction50_seed42.json",
+      "43": "configs/stage6_data_efficiency_final_fraction50_seed43.json",
+      "44": "configs/stage6_data_efficiency_final_fraction50_seed44.json"
+    }
+  },
+  "phase": "final_three_seed_validation_only",
+  "pilot_manifest": "configs/stage6_data_efficiency_pilot_manifest.json",
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "reused_fraction_percent": 100,
+  "reused_reference": "Stage 3 frozen seeds 42, 43, 44",
+  "stage": 6,
+  "start_stage_7": false,
+  "subset_seed": 42,
+  "test_evaluation": false,
+  "trained_fractions_percent": [
+    10,
+    25,
+    50
+  ]
+}

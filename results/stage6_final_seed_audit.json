@@ -1,0 +1,378 @@
+{
+  "all_embedding_hashes_distinct_within_fraction": false,
+  "all_loss_hashes_distinct_within_fraction": true,
+  "all_model_hashes_distinct_within_fraction": true,
+  "files": {
+    "audit_csv": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_results/stage6_final_seed_audit.csv"
+  },
+  "fractions_percent": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "hash_algorithm": "SHA-256",
+  "hundred_percent_stage3_reuse_verified": true,
+  "individual_model_weight_hashes": {
+    "10": {
+      "42": {
+        "model.safetensors": "68deb0b2e0ab8398dca2ddbbe553f1fc051377855a5b37523df2b45e122cd129"
+      },
+      "43": {
+        "model.safetensors": "43920daf0d3be3a8004b33d0ea267950ea05512deacdbba59148baae29c130ac"
+      },
+      "44": {
+        "model.safetensors": "c57fe9905ed37eb09c180547ee2b45e9762531841d977eebb0265f411c4ad2df"
+      }
+    },
+    "100": {
+      "42": {
+        "model.safetensors": "e6c9dcaa6a17b5aef604df330013239de6ebcaa3a2093030c39a050ad12fa3ee"
+      },
+      "43": {
+        "published_stage3_model_sha256_prefix_16": "152d069578db3866"
+      },
+      "44": {
+        "model.safetensors": "869e4f7900dcf64a8907fe4bce8a1e605415953aa56c7f4ccf6c7ca28304f9b0"
+      }
+    },
+    "25": {
+      "42": {
+        "model.safetensors": "e50233db42e28f7cec52b4dee7dc4b85205e4a8ecd142a0acb2aa75028c241e5"
+      },
+      "43": {
+        "model.safetensors": "e52d459f0303a1a1da30db5e2b83e396084a8ae64e7da80b2eb984665ef6071a"
+      },
+      "44": {
+        "model.safetensors": "9308dc816cc93ceb04658c4c42833e548ccbf6e7f89a230c4fb355d80af03e48"
+      }
+    },
+    "50": {
+      "42": {
+        "model.safetensors": "e01990d0a5d3fc6e6ebe45ddd3d075f842303389961bde69eb087351722b1214"
+      },
+      "43": {
+        "model.safetensors": "d5affac26571dbde10fdb4f9d765471373aed27a7ed751ebd615e33b1fbeb8b7"
+      },
+      "44": {
+        "model.safetensors": "5d86daedc0a7cb39e3b99909701774e403ae04fe5dbedc81303e655fd293d399"
+      }
+    }
+  },
+  "known_identical_embedding_seeds": {
+    "10": [
+      [
+        42,
+        44
+      ]
+    ]
+  },
+  "known_tensor_identical_selected_model_seeds": {
+    "10": [
+      [
+        42,
+        44
+      ]
+    ]
+  },
+  "pairwise_embedding_comparisons": [
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 10,
+      "maximum_absolute_difference": 0.0017571952193975449,
+      "seeds": [
+        42,
+        43
+      ]
+    },
+    {
+      "embeddings_identical": true,
+      "fraction_percent": 10,
+      "maximum_absolute_difference": 0.0,
+      "seeds": [
+        42,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 10,
+      "maximum_absolute_difference": 0.0017571952193975449,
+      "seeds": [
+        43,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 25,
+      "maximum_absolute_difference": 0.0039406586438417435,
+      "seeds": [
+        42,
+        43
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 25,
+      "maximum_absolute_difference": 0.022951863706111908,
+      "seeds": [
+        42,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 25,
+      "maximum_absolute_difference": 0.019209109246730804,
+      "seeds": [
+        43,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 50,
+      "maximum_absolute_difference": 0.002509497106075287,
+      "seeds": [
+        42,
+        43
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 50,
+      "maximum_absolute_difference": 0.00269993394613266,
+      "seeds": [
+        42,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 50,
+      "maximum_absolute_difference": 0.0031174570322036743,
+      "seeds": [
+        43,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 100,
+      "maximum_absolute_difference": 0.0017812792211771011,
+      "seeds": [
+        42,
+        43
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 100,
+      "maximum_absolute_difference": 0.0027762316167354584,
+      "seeds": [
+        42,
+        44
+      ]
+    },
+    {
+      "embeddings_identical": false,
+      "fraction_percent": 100,
+      "maximum_absolute_difference": 0.0021796487271785736,
+      "seeds": [
+        43,
+        44
+      ]
+    }
+  ],
+  "random_seeds": [
+    42,
+    43,
+    44
+  ],
+  "runs": [
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction10_seed42/best_checkpoint",
+      "embedding_sha256": "70f6f57caebf69004249107f7087e600b8d12a4fdd10bff5aed7aa476a01c3ea",
+      "first_loss": 2.227520704269409,
+      "fraction_percent": 10,
+      "last_loss": 0.8736008405685425,
+      "loss_sha256": "e1f93e541eb945104202d3dada1cfa8c95874a9f7aa93d3cba80d7e791ff8c5d",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "940fb7c9a9f58f46a11c68841bbd2e8dc429ff6540cdb9af7c03ed5017aea477",
+      "result_sha256": "ffc3fe6af27e7e239576f3834054a90341536e94ae62ed3e8630fde3a7d34a2b",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 42,
+      "training_seconds": 49.757
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction10_seed43/best_checkpoint",
+      "embedding_sha256": "7f55fbe5659fa1ad6be15ac428c28825195a6b329f2b0c50ecfef31718595c3a",
+      "first_loss": 2.221165657043457,
+      "fraction_percent": 10,
+      "last_loss": 2.2880258560180664,
+      "loss_sha256": "0c66ef2bb274f6ee094984999d675ae7361e86b5febda5799b490c7c3d1ba5c2",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "ddf9ea33df3d76d13a16d6856a0bc02ed278d52bc2ede12ca428528a173cd1c4",
+      "result_sha256": "da0391aeee8c1a61318984ce5cbe473c1a2e44afefae73bf3f137a1cde6579e9",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 43,
+      "training_seconds": 67.389
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction10_seed44/best_checkpoint",
+      "embedding_sha256": "70f6f57caebf69004249107f7087e600b8d12a4fdd10bff5aed7aa476a01c3ea",
+      "first_loss": 2.2282114028930664,
+      "fraction_percent": 10,
+      "last_loss": 0.8653622269630432,
+      "loss_sha256": "9c6cf2f241f77c4ad37aa1520a836761a158b0e7f2a03ebdede7bb4f46071790",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "eb166d3c6ea2a6cc353ed3f0f34706407fda3aff36451599ddef5b3a7f8aea06",
+      "result_sha256": "2956edcdb86998da3c4a53548c3c7cfd5db08bcf1e7bea0559bb3a392a8ebf14",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 44,
+      "training_seconds": 53.094
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction25_seed42/best_checkpoint",
+      "embedding_sha256": "1bf0053d535f42321a73e96fbae2b83c33cfa1ee30bbf37a3b621202d964f52a",
+      "first_loss": 2.1815223693847656,
+      "fraction_percent": 25,
+      "last_loss": 1.732378602027893,
+      "loss_sha256": "6eedd249dd85fd3e0a6ea26061536a4fc05e9c6dacbca551b792ab0996389be6",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "acbc5909ca09529e69c74f86e6f3f794b73817c6ba3c6db2dc64cfbf8df00820",
+      "result_sha256": "5716202495978762cdf76d93b01edb58265706bc557ed4958fa3f183360c714c",
+      "resumed_from_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction25_seed42/checkpoints/checkpoint-8",
+      "reused_stage3_run": false,
+      "seed": 42,
+      "training_seconds": 133.584
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction25_seed43/best_checkpoint",
+      "embedding_sha256": "29fc402f337890c1ec69f9950e1a80745fcb030ae956a3cd9a070187d38a35c5",
+      "first_loss": 2.189952850341797,
+      "fraction_percent": 25,
+      "last_loss": 1.9164469242095947,
+      "loss_sha256": "b0365a37f6b379f635499f115e6dc0430d11fad6efd0b2d9d2b66f23ca28bffc",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "206cf8dd9a1f32a8b8ff88de1ff0833a99d82d474724f934829ea33addd2baeb",
+      "result_sha256": "58b55e12f92a5526e681f168480aeedcaab43516f9aef19d87e53dbea8944031",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 43,
+      "training_seconds": 149.967
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction25_seed44/best_checkpoint",
+      "embedding_sha256": "a628853a6a1ae683f3c9b3f60034a368404fa6cc09ec4d9ad9c67f6e9103cd63",
+      "first_loss": 2.191709041595459,
+      "fraction_percent": 25,
+      "last_loss": 1.9304653406143188,
+      "loss_sha256": "10624b65c5946dcbe48a29e25a66d08a90f5b48dc3da01c4d8c96150cb3ddef1",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "621898522867ea38d394cc933872898f4abc809879d7ef7539e4579c3d80f02b",
+      "result_sha256": "b20395360783e23c138c80e213fc5593ba0d1b883330e66c32f74ba75f8b9fbe",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 44,
+      "training_seconds": 95.698
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction50_seed42/best_checkpoint",
+      "embedding_sha256": "6d95f8dde2a8fabc5ddf97f373d9c0140ef07a9dfee0e7364820d092113fd849",
+      "first_loss": 2.1222217082977295,
+      "fraction_percent": 50,
+      "last_loss": 1.5306899547576904,
+      "loss_sha256": "a03e49313db8213b072ab1cef848fef3035c5926e0a65b19a170ad130f53735e",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "244ac267a8ac248da437be5ff2d99eb95bae393d6f37ef4ce603634b8e2a7afe",
+      "result_sha256": "2b283655749bbe498570dd95b86f383503f29c08021d3767d5b69007ef08adb8",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 42,
+      "training_seconds": 121.079
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction50_seed43/best_checkpoint",
+      "embedding_sha256": "796151744d056fdc89f1efd8ca4a39cd49629c8e5aad186fd8597b4826bbd215",
+      "first_loss": 2.1359519958496094,
+      "fraction_percent": 50,
+      "last_loss": 1.5658282041549683,
+      "loss_sha256": "1369fd662f3522de285a9609c58602e6d06f715bd614c16001dc071d29a0cbc4",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "6f0cedd0d19bfa148bfb9243874e035cdafbed2076253657e6a22f71422dd620",
+      "result_sha256": "67b9a3d93807e8702eadc25e979a7716b83b9bc7091df0d26e04c3e78939a321",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 43,
+      "training_seconds": 116.435
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage6_data_efficiency/final_fraction50_seed44/best_checkpoint",
+      "embedding_sha256": "4adedbef29c5e6f52d2e5e3afbd7665bb97909269360a9e09d5f06c28aa627aa",
+      "first_loss": 2.1200873851776123,
+      "fraction_percent": 50,
+      "last_loss": 1.5430489778518677,
+      "loss_sha256": "7dba20e974a0e4ce47db252fa7449f39a516a8864564588e7eb3a2f1f6017b99",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "0c8e8a803fb46a1d4338c14f52470b45576b9e64725e0fba5d3ebf3e8b94b3c5",
+      "result_sha256": "3259e7a00cab0a6dfb259c502c3c03179d916baf1917dc87c117f1c58263a831",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": false,
+      "seed": 44,
+      "training_seconds": 121.755
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed42/best_checkpoint",
+      "embedding_sha256": "bc4c72c0efb1bc45cc20b5e2c9f7b25e087fe7e192ec1d394593b26f09b6f095",
+      "first_loss": 2.324143886566162,
+      "fraction_percent": 100,
+      "last_loss": 1.4490505456924438,
+      "loss_sha256": "eba3fea95ff7ba3c1640ef08db8dc6cc46c0c708f5e0dbaa22ed5c82a654b18b",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "309b746616027f424eae9fd69eec593b5934619aed880d28aa0f56fbc781f803",
+      "result_sha256": "5d61b6acca97925b3712d8f6a29cb5ea4178abcd6480be9454c7fc6ed80d5c9e",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": true,
+      "seed": 42,
+      "training_seconds": 71.328
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed43/best_checkpoint",
+      "embedding_sha256": "31aca728729b93382ab91574b12f16741aa8ee040f59cd28bf648743abbdb5a2",
+      "first_loss": 2.3297054767608643,
+      "fraction_percent": 100,
+      "last_loss": 1.4486398696899414,
+      "loss_sha256": "3833ffa673320641c30a651c33cfc39926375f55c29599f470341f66bddefe09",
+      "model_hash_source": "published_stage3_audit_prefix",
+      "model_sha256": "152d069578db3866",
+      "result_sha256": "21a33469cee8f8dcd9b10b9b7691990de123fe2b22453da9802538dd2e9b44ac",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": true,
+      "seed": 43,
+      "training_seconds": 75.704
+    },
+    {
+      "best_checkpoint": "/content/drive/MyDrive/RAFT/stage3_inbatch/final_seed44/best_checkpoint",
+      "embedding_sha256": "9ab6850ab98739210fe7cbb76ca42c9f23c81c844792241a8795824c78a215b1",
+      "first_loss": 2.3361546993255615,
+      "fraction_percent": 100,
+      "last_loss": 1.4301457405090332,
+      "loss_sha256": "3c2bbebb009001e130c2b5bf12ad020a47589d7bf8fc5166b6a8eefc323db609",
+      "model_hash_source": "live_checkpoint",
+      "model_sha256": "e93d63546670b89a07735c0236d9ff1620fb89527f7c302f04bf8b231d572a83",
+      "result_sha256": "9ebe5daeb31e7d300c3d2d9dfbf99d1bf5f838878a588ede4851b66a5ead5849",
+      "resumed_from_checkpoint": null,
+      "reused_stage3_run": true,
+      "seed": 44,
+      "training_seconds": 75.806
+    }
+  ],
+  "scope": "validation-only final three-seed sweep at all four fractions",
+  "stage": 6,
+  "test_split_loaded": false
+}

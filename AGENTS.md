@@ -197,4 +197,28 @@ checkpoint versus a 134,210,804-byte full checkpoint. LoRA therefore retained
 99.8% of Stage 3 full fine-tuning's mean validation nDCG@10 while training
 about 0.4% as many parameters and using about 1% of the checkpoint storage.
 The held-out test split was not loaded or evaluated during the Stage 5 final
-validation run. Stage 6 has not started.
+validation run.
+
+Stage 6 is complete. The frozen Stage 3 in-batch full-fine-tuning configuration
+was repeated on leakage-safe, group-aware nested subsets containing 10%, 25%,
+50%, and 100% of the Stage 1 training queries, with subset seed 42. The 10%,
+25%, and 50% conditions were trained with seeds 42, 43, and 44; the 100%
+condition reused the exactly equivalent frozen Stage 3 three-seed results.
+Evaluation frequency was scaled to the number of steps at each fraction while
+patience-2 early stopping and validation nDCG@10 checkpoint selection remained
+unchanged. Mean validation nDCG@10 with 95% percentile-bootstrap confidence
+intervals was 0.698048 [0.697962, 0.698221] at 10%, 0.703518 [0.700492,
+0.705158] at 25%, 0.702463 [0.702190, 0.702694] at 50%, and 0.701475
+[0.700679, 0.703068] at 100%. The 10% condition gives no benefit over
+pretrained E5; the 25%, 50%, and 100% conditions give small gains with a
+plateau from 25%. Their confidence intervals overlap, so there is no claim
+that 25% is best.
+
+Three Stage 6 provenance caveats are recorded in the committed audit: the 25%
+seed-42 run resumed from its saved checkpoint after interruption; the
+transferred Drive copy lacked the Stage 3 seed-43 model binary, so its
+previously published and approved checksum prefix was substituted; and the
+10% seed-42 and seed-44 runs selected tensor-identical models and produced
+identical corpus embeddings despite distinct loss histories and serialized
+checkpoint hashes. The held-out test split was not loaded or evaluated, and
+Stage 7 has not started.
